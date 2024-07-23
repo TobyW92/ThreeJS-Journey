@@ -33,7 +33,7 @@ const ship = new THREE.Group()
 scene.add(ship)
 
 const textureLoader = new THREE.TextureLoader()
-const pink = textureLoader.load('./models/ssgltf/textures/StarSparrow_Material_baseColor2.png')
+const newColor = textureLoader.load('./models/ssgltf/textures/StarSparrow_Material_baseColor2.png')
 
 gltfLoader.load(
     // './models/Fox/glTF/Fox.gltf',
@@ -49,16 +49,16 @@ gltfLoader.load(
             if (e.type == 'Mesh') {
                 console.log(e.material.map)
                 // e.material.color.set('#00ff00')
-                // e.material.map.source = pink.source
+                // e.material.map.source = newColor.source
 
             }
-            // console.log(pink)
+            // console.log(newColor)
             // console.log(e)
         })
         survey = mixer.clipAction(animations[0])
         // walk = mixer.clipAction(animations[1])
         // run = mixer.clipAction(animations[2])
-        console.log(pink)
+        console.log(newColor)
         survey.play()
         survey.loop = THREE.LoopPingPong
 
@@ -166,17 +166,11 @@ let z = 0;
 const changeShipColor = () => {
     ship.traverse((e) => {
         if (e.type == 'Mesh') {
-            console.log(e.material.map)
-            // e.material.color.set('#00ff00')
-            e.material.map.source = pink.source
-            // e.material.map = pink
+            // e.material.map = newColor
+            e.material.map.source = newColor.source
             e.material.map.needsUpdate = true
-
         }
-        // console.log(pink)
-        // console.log(e)
     })
-    console.log('aa')
 }
 
 
